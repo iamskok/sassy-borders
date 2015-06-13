@@ -1,0 +1,33 @@
+{
+  "name": "sassy-border",
+  "version": "0.1.0",
+  "description": "Sass border shorthand mixin",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skoks/sassy-border.git"
+  },
+  "keywords": [
+    "Sass",
+    "CSS",
+    "scss",
+    "helper",
+    "utility"
+  ],
+  "author": "Skok Vova <skok@vova.io>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/skoks/sassy-border/issues"
+  },
+  "homepage": "https://github.com/skoks/sassy-border#readme",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-gh-pages": "^0.5.2",
+    "gulp-ruby-sass": "^1.0.5",
+    "sassdoc": "^2.1.14"
+  }
+}
