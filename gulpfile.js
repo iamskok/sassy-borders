@@ -8,7 +8,7 @@ var SASSDOC_OPTIONS = {
 	dest: './sassdoc/',
 	verbose: true,
     basePath: 'https://github.com/skoks/sassy-border',
-    googleAnalytics: 'UA-63800864-1',
+    googleAnalytics: 'UA-64073536-1',
 };
 
 gulp.task('clean', function () {
