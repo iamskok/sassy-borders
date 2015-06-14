@@ -18,7 +18,7 @@
     "utility"
   ],
   "author": "Skok Vova <skok@vova.io>",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/skoks/sassy-border/issues"
   },

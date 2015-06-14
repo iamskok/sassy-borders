@@ -2,7 +2,7 @@
 
 Sassy-border is Sass shorthand mixin for border property. 
 
-Have you ever caught yourself thinking about declaring border property in one shorthand, like we do with `margin` and `padding`? I did :trollface:
+Have you ever caught yourself thinking about declaring border property in one shorthand, like we do with [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) and [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)? I did :trollface:
 
 ## Documentation
 
@@ -30,4 +30,5 @@ _Bower_:
 ```
 bower install sassy-border --save-dev
 ```
+
 

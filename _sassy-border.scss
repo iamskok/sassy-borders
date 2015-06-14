@@ -1,0 +1,90 @@
+///
+/// Shorthand mixin for border property.
+///
+/// @param {number | list} $borders - border width property/ properties
+///
+/// @param {string} $style - border style type
+///
+/// @param {color} $color - border color
+///
+///
+///
+/// @todo Add option to pass multiple `$styles` and `$colors` arguments
+///
+///
+///
+/// @example
+///
+/// border(10px, 'solid', #BADa55)
+/// //  border: 10px solid #BADa55;
+///
+/// border(10px 20px, 'dotted', #444)
+///  // border-top: 10px dotted #444;
+///  // border-bottom: 10px dotted #444;
+///  // border-left: 20px dotted #444;
+///  // border-right: 20px dotted #444;
+///
+/// border(10px 20px 30px, 'dashed', red)
+///  // border-top: 10px dashed red;
+///  // border-bottom: 30px dashed red;
+///  // border-left: 20px dashed red;
+///  // border-right: 20px dashed red;
+///
+/// border(10px 20px 30px 40px, 'solid', #663399)
+///  // border-top: 10px solid #663399;
+///  // border-right: 20px solid #663399;
+///  // border-bottom: 30px solid #663399;
+///  // border-left: 40px solid #663399;
+///
+///
+///
+/// @output Border `width`, `style` and `color` property/properties
+///
+///
+///
+/// @throw Invalid border style argument warning
+///
+
+
+@mixin border($borders, $style, $color) {
+	$style-properties: ('solid', 'dotted', 'dashed', 'double', 'groove', 'ridge', 'inset', 'outset');
+	// Check if `$style` and `$color` are valid data types
+	$valid-style: 0;
+	@for $i from 1 through length($style-properties) {
+		@if nth($style-properties, $i) == $style  and
+			type-of($color) == 'color' {
+			$valid-style: $valid-style + 1;
+
+			@if type-of($borders) == 'number' {
+				border: $borders unquote($style) $color;
+			}
+
+			@if type-of($borders) == 'list' and
+				length($borders) == 2 {
+				border-top: nth($borders, 1) unquote($style) $color;
+				border-bottom: nth($borders, 1) unquote($style) $color;
+				border-left: nth($borders, 2) unquote($style) $color;
+				border-right: nth($borders, 2) unquote($style) $color;
+			}
+
+			@if type-of($borders) == 'list' and
+				length($borders) == 3 {
+				border-top: nth($borders, 1) unquote($style) $color;
+				border-bottom: nth($borders, 3) unquote($style) $color;
+				border-left: nth($borders, 2) unquote($style) $color;
+				border-right: nth($borders, 2) unquote($style) $color;
+			}
+
+			@if type-of($borders) == 'list' and
+				length($borders) == 4 {
+				border-top: nth($borders, 1) unquote($style) $color;
+				border-right: nth($borders, 2) unquote($style) $color;
+				border-bottom: nth($borders, 3) unquote($style) $color;
+				border-left: nth($borders, 4) unquote($style) $color;
+			}
+		}
+	}
+	@if $valid-style != 1 {
+		@warn 'Invalid $style argument in border mixin';
+	}
+}
