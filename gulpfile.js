@@ -17,12 +17,12 @@ gulp.task('clean', function () {
 });
 
 gulp.task('sassdoc', ['clean'], function() {
-	return gulp.src('./_sassy-border.scss')
+	return gulp.src('./stylesheets/_sassy-border.scss')
 		.pipe(sassdoc(SASSDOC_OPTIONS));
 });
 
 gulp.task('default', ['sassdoc'], function() {
-	return sass('./_sassy-border.scss', {
+	return sass('./stylesheets/_sassy-border.scss', {
     		style: 'expanded',
     		precision: 10,
         	lineNumbers : true
@@ -31,7 +31,7 @@ gulp.task('default', ['sassdoc'], function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('./_sassy-border.scss', ['default']);
+	gulp.watch('./stylesheets/_sassy-border.scss', ['default']);
 });
 
 gulp.task('deploy', function() {

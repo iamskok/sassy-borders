@@ -20,5 +20,6 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "homepage": "https://github.com/Skoks/sassy-border"
 }
