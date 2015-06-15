@@ -41,8 +41,8 @@
 @mixin border($borders, $style, $color) {
 	// Check if `$style` and `$color` are valid data types
 	$valid-style: 0;
-	@for $i from 1 through length($border-styles) {
-		@if nth($border-styles, $i) == $style  and
+	@each $border-style in $border-styles {
+		@if $border-style == $style  and
 			type-of($color) == 'color' {
 			$valid-style: $valid-style + 1;
 
