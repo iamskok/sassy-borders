@@ -37,45 +37,19 @@
 /// @throw Invalid border style argument warning
 ///
 
-
-@mixin border($borders, $style, $color) {
-	// Check if `$style` and `$color` are valid data types
-	$valid-style: 0;
-	@each $border-style in $border-styles {
-		@if $border-style == $style  and
-			type-of($color) == 'color' {
-			$valid-style: $valid-style + 1;
-
-			@if type-of($borders) == 'number' {
-				border: $borders unquote($style) $color;
-			}
-
-			@if type-of($borders) == 'list' and
-				length($borders) == 2 {
-				border-top: nth($borders, 1) unquote($style) $color;
-				border-bottom: nth($borders, 1) unquote($style) $color;
-				border-left: nth($borders, 2) unquote($style) $color;
-				border-right: nth($borders, 2) unquote($style) $color;
-			}
-
-			@if type-of($borders) == 'list' and
-				length($borders) == 3 {
-				border-top: nth($borders, 1) unquote($style) $color;
-				border-bottom: nth($borders, 3) unquote($style) $color;
-				border-left: nth($borders, 2) unquote($style) $color;
-				border-right: nth($borders, 2) unquote($style) $color;
-			}
-
-			@if type-of($borders) == 'list' and
-				length($borders) == 4 {
-				border-top: nth($borders, 1) unquote($style) $color;
-				border-right: nth($borders, 2) unquote($style) $color;
-				border-bottom: nth($borders, 3) unquote($style) $color;
-				border-left: nth($borders, 4) unquote($style) $color;
-			}
-		}
+@mixin border($borders, $styles, $colors) {
+	@debug __ length($borders) length($styles) length($colors);
+	@if type-of($borders) == 'number' and
+		type-of($styles) == 'string' and
+		type-of($colors) == 'color' {
+		border: 2px solid red;
 	}
-	@if $valid-style != 1 {
-		@warn 'Invalid $style argument in border mixin';
+	@if length($borders) == length($styles) == length($colors) {
+		border-left: 2px solid orange;
+	}
+	@if ((type-of($borders) == 'list' and length($borders) != 1) or 'number') and
+		((type-of($styles) == 'list' and length($styles) != 1) or 'string') and
+		((type-of($borders) == 'list' and length($colors) != 1) or 'color') {
+		border-left-color: #663399;
 	}
 }
