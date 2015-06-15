@@ -31,7 +31,7 @@ gulp.task('default', ['sassdoc'], function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch('./stylesheets/_sassy-border.scss', ['default']);
+	gulp.watch('./stylesheets/**/*.scss', ['default']);
 });
 
 gulp.task('deploy', function() {
