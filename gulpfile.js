@@ -17,7 +17,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('sassdoc', ['clean'], function() {
-	return gulp.src('./stylesheets/_sassy-border.scss')
+	return gulp.src('./stylesheets/**/*.scss')
 		.pipe(sassdoc(SASSDOC_OPTIONS));
 });
 
