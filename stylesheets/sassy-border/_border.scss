@@ -42,14 +42,15 @@
 	@if type-of($borders) == 'number' and
 		type-of($styles) == 'string' and
 		type-of($colors) == 'color' {
-		border: 2px solid red;
-	}
-	@if length($borders) == length($styles) == length($colors) {
-		border-left: 2px solid orange;
-	}
-	@if ((type-of($borders) == 'list' and length($borders) != 1) or 'number') and
-		((type-of($styles) == 'list' and length($styles) != 1) or 'string') and
-		((type-of($borders) == 'list' and length($colors) != 1) or 'color') {
-		border-left-color: #663399;
+
+	} @else if length($borders) == length($styles) and
+		ength($styles) == length($colors) and
+		type-of($styles) == list {
+
+	} @else if (type-of($borders) == 'list' or 'border') and
+		(type-of($styles) == 'list' or 'string') and
+		(type-of($colors) == 'list' or 'color') {
+
 	}
 }
+
