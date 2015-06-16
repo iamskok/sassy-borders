@@ -44,8 +44,10 @@
 		type-of($colors) == 'color' {
 
 	} @else if length($borders) == length($styles) and
-		ength($styles) == length($colors) and
-		type-of($styles) == list {
+		length($styles) == length($colors) and
+		type-of($styles) == 'list' and
+		length($styles) != 0 and
+		length($styles) != 1 {
 
 	} @else if (type-of($borders) == 'list' or 'border') and
 		(type-of($styles) == 'list' or 'string') and
