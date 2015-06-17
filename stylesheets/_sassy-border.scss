@@ -54,12 +54,28 @@
 	@if type-of($widths) == 'number' and
 		type-of($styles) == 'string' and
 		type-of($colors) == 'color' {
-		border: 2px solid red;
+		border: $widths $styles $colors;
 	} @else if length($widths) == length($styles) and
 		length($styles) == length($colors) and
 		type-of($styles) == 'list' and
-		length($styles) > 1 {
-		border-left: 2px solid orange;
+		length($styles) > 1 and
+		length($styles) < 5 {
+			@if length($widths) == 2 {
+				border-top: nth($widths, 2) nth($styles, 2) nth($colors, 2);
+				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
+				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
+				border-left: nth($widths, 1) nth($styles, 1) nth($colors, 1);
+			} @else if length($widths) == 3 {
+				border-top: nth($widths, 3) nth($styles, 3) nth($colors, 3);
+				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
+				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
+				border-left: nth($widths, 1) nth($styles, 1) nth($colors, 1);
+			} @else if length($widths) == 4 {
+				border-top: nth($widths, 3) nth($styles, 3) nth($colors, 3);
+				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
+				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
+				border-left: nth($widths, 4) nth($styles, 4) nth($colors, 4);
+			}
 	} @else if (type-of($widths) == 'list' or 'border') and
 		(type-of($styles) == 'list' or 'string') and
 		(type-of($colors) == 'list' or 'color') {
@@ -84,8 +100,6 @@
 			border-right-width: nth($widths, 2);
 			border-bottom-width: nth($widths, 3);
 			border-left-width: nth($widths, 4);
-		} @else {
-			@warn 'Check border mixin '
 		}
 
 		@if length($styles) == 1 {
@@ -132,6 +146,6 @@
 			border-left-color: nth($colors, 4);
 		}
 	} @else {
-		@warn 'Border mixin arguments are invalid!';
+		@warn 'Check Border mixin arguments!';
 	}
 }
