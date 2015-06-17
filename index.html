@@ -97,27 +97,15 @@
 	} @else {
 		@warn &#39;Check Border mixin arguments!&#39;;
 	}
- }" data-collapsed="@mixin border($widths, $style, $color) { ... }"><code>@mixin border($widths, $style, $color) { ... }</code></pre><a href="https://github.com/skoks/sassy-border/_sassy-border.scss#L53-L151" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Ultimate shorthand mixin for border properties.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$widths</code></th><td data-label="desc"><p>border width property/ properties</p></td><td data-label="type"><code>Number</code> or <code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$style</code></th><td data-label="desc"><p>border style type</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$color</code></th><td data-label="desc"><p>border color</p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Output</h3><div class="item__description"><p>Border <code>width</code>, <code>style</code> and <code>color</code> properties</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>
+ }" data-collapsed="@mixin border($widths, $style, $color) { ... }"><code>@mixin border($widths, $style, $color) { ... }</code></pre><a href="https://github.com/skoks/sassy-border/_sassy-border.scss#L41-L139" class="item__source-link" target="_blank">View source</a></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Ultimate shorthand mixin for border properties.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter</span>Name</th><th scope="col"><span class="visually-hidden">parameter</span>Description</th><th scope="col"><span class="visually-hidden">parameter</span>Type</th><th scope="col"><span class="visually-hidden">parameter</span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$widths</code></th><td data-label="desc"><p>border width property/ properties</p></td><td data-label="type"><code>Number</code> or <code>List</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$style</code></th><td data-label="desc"><p>border style type</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$color</code></th><td data-label="desc"><p>border color</p></td><td data-label="type"><code>Color</code></td><td data-label="default">&mdash;<span class="visually-hidden">none</span></td></tr></tbody></table><h3 class="item__sub-heading">Output</h3><div class="item__description"><p>Border <code>width</code>, <code>style</code> and <code>color</code> properties</p></div><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>
 border(10px, solid, #BADa55)
 //  border: 10px solid #BADa55;
 
-border(10px 20px, dotted, #444)
+border(10px 20px, dotted dashed, #444 #000)
  // border-top: 10px dotted #444;
  // border-bottom: 10px dotted #444;
- // border-left: 20px dotted #444;
- // border-right: 20px dotted #444;
-
-border(10px 20px 30px, dashed, red)
- // border-top: 10px dashed red;
- // border-bottom: 30px dashed red;
- // border-left: 20px dashed red;
- // border-right: 20px dashed red;
-
-border(10px 20px 30px 40px, solid, #663399)
- // border-top: 10px solid #663399;
- // border-right: 20px solid #663399;
- // border-bottom: 30px solid #663399;
- // border-left: 40px solid #663399;
+ // border-left: 20px dashed #000;
+ // border-right: 20px dashed #000;
 
 border(10px 20px 5px, dashed dotted, pink red green);
 // border-top-width: 10px;
