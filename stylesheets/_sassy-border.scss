@@ -1,3 +1,137 @@
-@import 'sassy-border/set-border';
-@import 'sassy-border/border-styles';
-@import 'sassy-border/set-border-values';
+/// Ultimate shorthand mixin for border properties.
+///
+/// @param {number | list} $widths - border width property/ properties
+///
+/// @param {string} $style - border style type
+///
+/// @param {color} $color - border color
+///
+/// @todo Add option to pass multiple `$styles` and `$colors` arguments
+///
+/// @example
+///
+/// border(10px, solid, #BADa55)
+/// //  border: 10px solid #BADa55;
+///
+/// border(10px 20px, dotted, #444)
+///  // border-top: 10px dotted #444;
+///  // border-bottom: 10px dotted #444;
+///  // border-left: 20px dotted #444;
+///  // border-right: 20px dotted #444;
+///
+/// border(10px 20px 30px, dashed, red)
+///  // border-top: 10px dashed red;
+///  // border-bottom: 30px dashed red;
+///  // border-left: 20px dashed red;
+///  // border-right: 20px dashed red;
+///
+/// border(10px 20px 30px 40px, solid, #663399)
+///  // border-top: 10px solid #663399;
+///  // border-right: 20px solid #663399;
+///  // border-bottom: 30px solid #663399;
+///  // border-left: 40px solid #663399;
+///
+/// border(10px 20px 5px, dashed dotted, pink red green);
+/// // border-top-width: 10px;
+/// // border-right-width: 20px;
+/// // border-bottom-width: 5px;
+/// // border-left-width: 20px;
+/// // border-top-style: dotted;
+/// // border-right-style: dashed;
+/// // border-bottom-style: dotted;
+/// // border-left-style: dashed;
+/// // border-top-color: pink;
+/// // border-right-color: red;
+/// // border-bottom-color: green;
+/// // border-left-color: red;
+///
+/// @output Border `width`, `style` and `color` properties
+///
+/// @throw Invalid border style argument warning
+///
+
+@mixin border($widths, $styles, $colors) {
+	@if type-of($widths) == 'number' and
+		type-of($styles) == 'string' and
+		type-of($colors) == 'color' {
+		border: 2px solid red;
+	} @else if length($widths) == length($styles) and
+		length($styles) == length($colors) and
+		type-of($styles) == 'list' and
+		length($styles) > 1 {
+		border-left: 2px solid orange;
+	} @else if (type-of($widths) == 'list' or 'border') and
+		(type-of($styles) == 'list' or 'string') and
+		(type-of($colors) == 'list' or 'color') {
+
+		@if length($widths) == 1 {
+			border-top-width: $widths;
+			border-right-width: $widths;
+			border-bottom-width: $widths;
+			border-left-width: $widths;
+		} @else if length($widths) == 2 {
+			border-top-width: nth($widths, 2);
+			border-right-width: nth($widths, 1);
+			border-bottom-width: nth($widths, 2);
+			border-left-width: nth($widths, 1);
+		} @else if length($widths) == 3 {
+			border-top-width: nth($widths, 1);
+			border-right-width: nth($widths, 2);
+			border-bottom-width: nth($widths, 3);
+			border-left-width: nth($widths, 2);
+		} @else if length($widths) == 4 {
+			border-top-width: nth($widths, 1);
+			border-right-width: nth($widths, 2);
+			border-bottom-width: nth($widths, 3);
+			border-left-width: nth($widths, 4);
+		} @else {
+			@warn 'Check border mixin '
+		}
+
+		@if length($styles) == 1 {
+			border-top-style: $styles;
+			border-right-style: $styles;
+			border-bottom-style: $styles;
+			border-left-style: $styles;
+		} @else if length($styles) == 2 {
+			border-top-style: nth($styles, 2);
+			border-right-style: nth($styles, 1);
+			border-bottom-style: nth($styles, 2);
+			border-left-style: nth($styles, 1);
+		} @else if length($styles) == 3 {
+			border-top-style: nth($styles, 1);
+			border-right-style: nth($styles, 2);
+			border-bottom-style: nth($styles, 3);
+			border-left-style: nth($styles, 2);
+		} @else if length($styles) == 4 {
+			border-top-style: nth($styles, 1);
+			border-right-style: nth($styles, 2);
+			border-bottom-style: nth($styles, 3);
+			border-left-style: nth($styles, 4);
+		}
+
+		@if length($colors) == 1 {
+			border-top-color: $colors;
+			border-right-color: $colors;
+			border-bottom-color: $colors;
+			border-left-color: $colors;
+		} @else if length($colors) == 2 {
+			border-top-color: nth($colors, 2);
+			border-right-color: nth($colors, 1);
+			border-bottom-color: nth($colors, 2);
+			border-left-color: nth($colors, 1);
+		} @else if length($colors) == 3 {
+			border-top-color: nth($colors, 1);
+			border-right-color: nth($colors, 2);
+			border-bottom-color: nth($colors, 3);
+			border-left-color: nth($colors, 2);
+		} @else if length($colors) == 4 {
+			border-top-color: nth($colors, 1);
+			border-right-color: nth($colors, 2);
+			border-bottom-color: nth($colors, 3);
+			border-left-color: nth($colors, 4);
+		}
+	} @else {
+		@warn 'Border mixin arguments are invalid!';
+	}
+}
