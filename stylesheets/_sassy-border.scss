@@ -13,23 +13,11 @@
 /// border(10px, solid, #BADa55)
 /// //  border: 10px solid #BADa55;
 ///
-/// border(10px 20px, dotted, #444)
+/// border(10px 20px, dotted dashed, #444 #000)
 ///  // border-top: 10px dotted #444;
 ///  // border-bottom: 10px dotted #444;
-///  // border-left: 20px dotted #444;
-///  // border-right: 20px dotted #444;
-///
-/// border(10px 20px 30px, dashed, red)
-///  // border-top: 10px dashed red;
-///  // border-bottom: 30px dashed red;
-///  // border-left: 20px dashed red;
-///  // border-right: 20px dashed red;
-///
-/// border(10px 20px 30px 40px, solid, #663399)
-///  // border-top: 10px solid #663399;
-///  // border-right: 20px solid #663399;
-///  // border-bottom: 30px solid #663399;
-///  // border-left: 40px solid #663399;
+///  // border-left: 20px dashed #000;
+///  // border-right: 20px dashed #000;
 ///
 /// border(10px 20px 5px, dashed dotted, pink red green);
 /// // border-top-width: 10px;
