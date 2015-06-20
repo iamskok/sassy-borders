@@ -6,8 +6,6 @@
 ///
 /// @param {color} $color - border color
 ///
-/// @todo Add option to pass multiple `$styles` and `$colors` arguments
-///
 /// @example
 ///
 /// border(10px, solid, #BADa55)
@@ -19,23 +17,13 @@
 ///  // border-left: 20px dashed #000;
 ///  // border-right: 20px dashed #000;
 ///
-/// border(10px 20px 5px, dashed dotted, pink red green);
-/// // border-top-width: 10px;
-/// // border-right-width: 20px;
-/// // border-bottom-width: 5px;
-/// // border-left-width: 20px;
-/// // border-top-style: dotted;
-/// // border-right-style: dashed;
-/// // border-bottom-style: dotted;
-/// // border-left-style: dashed;
-/// // border-top-color: pink;
-/// // border-right-color: red;
-/// // border-bottom-color: green;
-/// // border-left-color: red;
-///
 /// @output Border `width`, `style` and `color` properties
 ///
-/// @throw Invalid border style argument warning
+/// @throw
+///
+/// Check border mixin arguments
+///
+/// Invalid list length for border mixin arguments
 ///
 
 @mixin border($widths, $styles, $colors) {
@@ -43,97 +31,56 @@
 		type-of($styles) == 'string' and
 		type-of($colors) == 'color' {
 		border: $widths $styles $colors;
-	} @else if length($widths) == length($styles) and
-		length($styles) == length($colors) and
-		type-of($styles) == 'list' and
-		length($styles) > 1 and
-		length($styles) < 5 {
-			@if length($widths) == 2 {
-				border-top: nth($widths, 2) nth($styles, 2) nth($colors, 2);
-				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
-				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
-				border-left: nth($widths, 1) nth($styles, 1) nth($colors, 1);
-			} @else if length($widths) == 3 {
-				border-top: nth($widths, 3) nth($styles, 3) nth($colors, 3);
-				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
-				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
-				border-left: nth($widths, 1) nth($styles, 1) nth($colors, 1);
-			} @else if length($widths) == 4 {
-				border-top: nth($widths, 3) nth($styles, 3) nth($colors, 3);
-				border-right: nth($widths, 1) nth($styles, 1) nth($colors, 1);
-				border-bottom: nth($widths, 2) nth($styles, 2) nth($colors, 2);
-				border-left: nth($widths, 4) nth($styles, 4) nth($colors, 4);
-			}
-	} @else if (type-of($widths) == 'list' or 'border') and
+	} @else if (type-of($widths) == 'list' or 'number') and
 		(type-of($styles) == 'list' or 'string') and
 		(type-of($colors) == 'list' or 'color') {
 
-		@if length($widths) == 1 {
-			border-top-width: $widths;
-			border-right-width: $widths;
-			border-bottom-width: $widths;
-			border-left-width: $widths;
-		} @else if length($widths) == 2 {
-			border-top-width: nth($widths, 2);
-			border-right-width: nth($widths, 1);
-			border-bottom-width: nth($widths, 2);
-			border-left-width: nth($widths, 1);
-		} @else if length($widths) == 3 {
-			border-top-width: nth($widths, 1);
-			border-right-width: nth($widths, 2);
-			border-bottom-width: nth($widths, 3);
-			border-left-width: nth($widths, 2);
-		} @else if length($widths) == 4 {
-			border-top-width: nth($widths, 1);
-			border-right-width: nth($widths, 2);
-			border-bottom-width: nth($widths, 3);
-			border-left-width: nth($widths, 4);
+		// Define border property placeholders
+		$border-top: ();
+		$border-right: ();
+		$border-bottom: ();
+		$border-left: ();
+
+		// Measure length of each argument value and
+		// append it to appropriate placeholder recursivly
+		@each $property in ($widths, $styles, $colors) {
+			@if length($property) == 1 {
+				$border-top: append($border-top, $property);
+				$border-right: append($border-right, $property);
+				$border-bottom: append($border-bottom, $property);
+				$border-left: append($border-left, $property);
+			} @else if length($property) == 2 {
+				$border-top: append($border-top, nth($property, 1));
+				$border-right: append($border-right, nth($property, 2));
+				$border-bottom: append($border-bottom, nth($property, 1));
+				$border-left: append($border-left, nth($property, 2));
+			} @else if length($property) == 3 {
+				$border-top: append($border-top, nth($property, 1));
+				$border-right: append($border-right, nth($property, 2));
+				$border-bottom: append($border-bottom, nth($property, 3));
+				$border-left: append($border-left, nth($property, 2));
+			} @else if length($property) == 4 {
+				$border-top: append($border-top, nth($property, 1));
+				$border-right: append($border-right, nth($property, 2));
+				$border-bottom: append($border-bottom, nth($property, 3));
+				$border-left: append($border-left, nth($property, 4));
+			} @else {
+				@warn "Invalid list length for border mixin arguments";
+			}
 		}
 
-		@if length($styles) == 1 {
-			border-top-style: $styles;
-			border-right-style: $styles;
-			border-bottom-style: $styles;
-			border-left-style: $styles;
-		} @else if length($styles) == 2 {
-			border-top-style: nth($styles, 2);
-			border-right-style: nth($styles, 1);
-			border-bottom-style: nth($styles, 2);
-			border-left-style: nth($styles, 1);
-		} @else if length($styles) == 3 {
-			border-top-style: nth($styles, 1);
-			border-right-style: nth($styles, 2);
-			border-bottom-style: nth($styles, 3);
-			border-left-style: nth($styles, 2);
-		} @else if length($styles) == 4 {
-			border-top-style: nth($styles, 1);
-			border-right-style: nth($styles, 2);
-			border-bottom-style: nth($styles, 3);
-			border-left-style: nth($styles, 4);
+		@each $border-property in ($border-top, $border-right, $border-bottom, $border-left) {
+			@if nth($border-property, 1) == 0 {
+				$border-property: nth($border-property, 1);
+			}
 		}
 
-		@if length($colors) == 1 {
-			border-top-color: $colors;
-			border-right-color: $colors;
-			border-bottom-color: $colors;
-			border-left-color: $colors;
-		} @else if length($colors) == 2 {
-			border-top-color: nth($colors, 2);
-			border-right-color: nth($colors, 1);
-			border-bottom-color: nth($colors, 2);
-			border-left-color: nth($colors, 1);
-		} @else if length($colors) == 3 {
-			border-top-color: nth($colors, 1);
-			border-right-color: nth($colors, 2);
-			border-bottom-color: nth($colors, 3);
-			border-left-color: nth($colors, 2);
-		} @else if length($colors) == 4 {
-			border-top-color: nth($colors, 1);
-			border-right-color: nth($colors, 2);
-			border-bottom-color: nth($colors, 3);
-			border-left-color: nth($colors, 4);
-		}
+		// Output generated properties
+		border-top: $border-top;
+		border-right: $border-right;
+		border-bottom: $border-bottom;
+		border-left: $border-left;
 	} @else {
-		@warn 'Check Border mixin arguments!';
+		@warn 'Check border mixin arguments';
 	}
 }
