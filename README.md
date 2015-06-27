@@ -6,9 +6,7 @@ Have you ever caught yourself thinking about declaring border property in one sh
 
 __[DEMO](http://codepen.io/Skoks/pen/zGdmyQ)__
 
-## Documentation
-
-[Sassy-border](http://skoks.github.io/sassy-borders/)
+## [Documentation](http://skoks.github.io/sassy-borders/)
 
 ## Usage
 
