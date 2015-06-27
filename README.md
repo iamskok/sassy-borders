@@ -8,7 +8,7 @@ __[DEMO](http://codepen.io/Skoks/pen/zGdmyQ)__
 
 ## Documentation
 
-Sassy-border [Official Documentation](http://skoks.github.io/sassy-border/)
+[Sassy-border](http://skoks.github.io/sassy-borders/)
 
 ## Usage
 
