@@ -1,10 +1,8 @@
 # Sassy-border
 
-Sassy-border is Sass shorthand mixin for border properties. 
+Sassy-border is Sass shorthand for border properties. 
 
-Have you ever caught yourself thinking about declaring border property in one shorthand, like we do with [`margin`](https://developer.mozilla.org/en-US/docs/Web/CSS/margin) and [`padding`](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)? I did :trollface:
-
-## [Documentation](http://skoks.github.io/sassy-borders/)
+## [Documentation](http://iamskok.github.io/sassy-borders/)
 
 ## Usage
 
